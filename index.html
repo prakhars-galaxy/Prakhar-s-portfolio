@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prakhar Dwivedi | Portfolio</title>
+    <title>Portfolio | Brand Architect</title>
     <style>
         /* Classy & Elegant Color Palette */
         :root {
@@ -60,6 +60,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 2.5rem 0;
+            position: relative; /* Needed for mobile dropdown */
         }
         
         nav .logo {
@@ -69,6 +70,8 @@
             text-decoration: none;
             letter-spacing: 1px;
             text-transform: uppercase;
+            cursor: pointer;
+            z-index: 1000;
         }
         
         nav .logo span {
@@ -94,14 +97,73 @@
             color: var(--accent-gold);
         }
 
+        /* Hamburger Menu (Hidden on Desktop) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        
+        .hamburger span {
+            width: 30px;
+            height: 2px;
+            background-color: var(--accent-gold);
+            transition: 0.3s;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            nav ul {
+                position: absolute;
+                top: 80px;
+                right: 0;
+                width: 100%;
+                background-color: var(--bg-card);
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+                padding: 2rem 0;
+                border-radius: 4px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+                border-top: 2px solid var(--accent-gold);
+                
+                /* Hidden state */
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: all 0.3s ease;
+                z-index: 999;
+            }
+
+            /* Active state when hamburger is clicked */
+            nav ul.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            /* Hero text adjustment for mobile */
+            header h1 {
+                font-size: 2.8rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
         /* Hero Section */
         header {
-            padding: 7rem 0 6rem 0;
+            padding: 5rem 0 6rem 0;
             border-bottom: 1px solid rgba(212, 175, 55, 0.15);
         }
 
         header h1 {
-            font-size: 4rem;
             margin: 0.5rem 0 1rem 0;
             line-height: 1.1;
         }
@@ -144,7 +206,6 @@
             display: flex;
             align-items: center;
             margin-bottom: 3.5rem;
-            font-size: 2.2rem;
         }
 
         .section-title::after {
@@ -249,8 +310,17 @@
     <div class="container">
         <!-- Navigation -->
         <nav>
-            <a href="#" class="logo">Prakhar<span>.</span></a>
-            <ul>
+            <a href="#" onclick="window.location.reload(); return false;" class="logo">Brand<span>.</span>Architect</a>
+            
+            <!-- Hamburger Icon -->
+            <div class="hamburger" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Navigation Links -->
+            <ul id="nav-links">
                 <li><a href="#about">Profile</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Portfolio</a></li>
@@ -281,7 +351,7 @@
                         Beyond the classroom, I am deeply involved in corporate communications and brand building. I author editorial introductions for university publications such as <em>Pratibimb</em> and <em>Business Quotient</em>, and regularly serve as the lead anchor for official campus inaugurations and guest lectures, honing my public speaking and pitching skills. 
                     </p>
                     <p style="color: var(--text-muted);">
-                        Outside of the corporate sphere, i am good at badminton which helps build discipline and strength to do my chores easily.
+                        Outside of the corporate sphere, i play badminton that helps build discipline and train me on various challenges and perspectives in life.
                     </p>
                 </div>
                 <div style="flex: 1; min-width: 250px;">
@@ -369,5 +439,23 @@
         </footer>
     </div>
 
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        const hamburger = document.getElementById('hamburger-menu');
+        const navLinks = document.getElementById('nav-links');
+        const links = document.querySelectorAll('#nav-links a');
+
+        // Toggle menu when clicking the hamburger icon
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
