@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prakhar Dwivedi | Portfolio</title>
+    <style>
+        /* Classy & Elegant Color Palette */
+        :root {
+            --bg-dark: #0A1612;        /* Very deep forest/emerald black */
+            --bg-card: #13241E;        /* Rich dark green for cards */
+            --text-main: #F4F6F5;      /* Crisp off-white */
+            --text-muted: #A3B5AE;     /* Muted sage/silver for readability */
+            --accent-gold: #D4AF37;    /* Classic Champagne Gold */
+            --accent-hover: #F3D270;   /* Brighter gold for hover */
+            
+            /* Typography */
+            --font-sans: 'Inter', 'Segoe UI', Roboto, Helvetica, sans-serif;
+            --font-serif: 'Georgia', 'Times New Roman', serif; /* Classy touch */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: var(--font-serif);
+            font-weight: normal;
+            color: var(--text-main);
+        }
+        
+        .accent-text {
+            font-family: var(--font-serif);
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            font-style: italic;
+            letter-spacing: 0.5px;
+        }
+
+        /* Layout & Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2.5rem 0;
+        }
+        
+        nav .logo {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--text-main);
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        nav .logo span {
+            color: var(--accent-gold);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Hero Section */
+        header {
+            padding: 7rem 0 6rem 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        header h1 {
+            font-size: 4rem;
+            margin: 0.5rem 0 1rem 0;
+            line-height: 1.1;
+        }
+
+        header p.subtitle {
+            font-size: 1.15rem;
+            color: var(--accent-gold);
+            max-width: 800px;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: transparent;
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            padding: 0.8rem 2rem;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.4s ease;
+        }
+
+        .btn:hover {
+            background: var(--accent-gold);
+            color: var(--bg-dark);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3.5rem;
+            font-size: 2.2rem;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            height: 1px;
+            width: 100px;
+            background-color: var(--accent-gold);
+            margin-left: 20px;
+            opacity: 0.5;
+        }
+
+        /* Grid Layout for Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 4px;
+            border-top: 3px solid transparent;
+            transition: all 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-top: 3px solid var(--accent-gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card .date {
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+            margin-bottom: 1.2rem;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Lists */
+        ul.custom-list {
+            list-style: none;
+            color: var(--text-muted);
+        }
+
+        ul.custom-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        ul.custom-list li::before {
+            content: "◆";
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-size: 0.8rem;
+            top: 4px;
+        }
+
+        /* Contact Section */
+        .contact-link {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 2px;
+        }
+        
+        .contact-link:hover {
+            color: var(--accent-gold);
+            border-bottom-color: var(--accent-gold);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <a href="#" class="logo">Prakhar<span>.</span></a>
+            <ul>
+                <li><a href="#about">Profile</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hero Section -->
+        <header>
+            <p class="accent-text">Welcome, my name is</p>
+            <h1>Prakhar Dwivedi.</h1>
+            <p class="subtitle">BBA Hons • CRC Placement Secretary • Marketing & Sales Strategist</p>
+            <p style="color: var(--text-muted); max-width: 650px; margin-bottom: 2.5rem; font-size: 1.05rem;">
+                I am a second-year student at Amity Business School, bridging the gap between brand strategy and corporate execution. From conceptualizing marketing campaigns to orchestrating university-wide events, I build frameworks that connect brands with audiences.
+            </p>
+            <a href="https://www.linkedin.com/in/prakhardwivedi1408" class="btn" target="_blank">View LinkedIn Profile</a>
+        </header>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2 class="section-title">Professional Profile</h2>
+            <div style="display: flex; gap: 4rem; flex-wrap: wrap;">
+                <div style="flex: 2; min-width: 300px;">
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                        Currently pursuing my Bachelor of Business Administration at Amity University Mumbai, I serve as the Class Representative for Section B and achieved a 9.65 SGPA in my foundational semester. My academic focus is heavily geared toward marketing strategy, sales operations, and corporate relations.
+                    </p>
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                        Beyond the classroom, I am deeply involved in corporate communications and brand building. I author editorial introductions for university publications such as <em>Pratibimb</em> and <em>Business Quotient</em>, and regularly serve as the lead anchor for official campus inaugurations and guest lectures, honing my public speaking and pitching skills. 
+                    </p>
+                    <p style="color: var(--text-muted);">
+                        Outside of the corporate sphere, I am a trained Kathak dancer. This classical background instills a profound sense of discipline, rhythm, and creative presentation—qualities I seamlessly translate into dynamic marketing strategies and client interactions.
+                    </p>
+                </div>
+                <div style="flex: 1; min-width: 250px;">
+                    <h3 style="margin-bottom: 1.5rem; font-size: 1.3rem;">Areas of Expertise</h3>
+                    <ul class="custom-list">
+                        <li>Brand Strategy & Marketing</li>
+                        <li>Corporate Sales & Relations</li>
+                        <li>Event Architecture & Anchoring</li>
+                        <li>Editorial & Persuasive Writing</li>
+                        <li>Business Planning & Prototyping</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2 class="section-title">Career Experience</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Placement Secretary</h3>
+                    <span class="date">Corporate Resource Centre | Amity University</span>
+                    <p>Facilitating high-level communication and relationship-building between students and corporate recruiters, pitching the university's talent pool, and driving professional opportunities.</p>
+                </div>
+                <div class="card">
+                    <h3>Summer Intern</h3>
+                    <span class="date">Union Living, Pune | May 2026 - Aug 2026</span>
+                    <p>Completed a comprehensive summer internship, gaining practical, hands-on exposure to business operations, industry dynamics, and effective corporate management practices.</p>
+                </div>
+                <div class="card">
+                    <h3>Event Anchor & Core Team</h3>
+                    <span class="date">Amity University | 2025 - Present</span>
+                    <p>Managed logistics and audience engagement for a highly successful 3-day Guinness World Record signature campaign. Conceptualized digital initiatives for the Aminova fest.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects & Publications -->
+        <section id="projects">
+            <h2 class="section-title">Projects & Publications</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Madvertise Campaign</h3>
+                    <span class="date">Brand Strategy Project</span>
+                    <p>Formulated core branding ideas, strategic marketing slogans, and promotional campaign materials to drive significant engagement and awareness for the Madvertise event.</p>
+                </div>
+                <div class="card">
+                    <h3>DreamLink</h3>
+                    <span class="date">IIT Bombay Eureka Startup Competition</span>
+                    <p>Developed comprehensive business plans and prototype specifications for a wearable neuro-tech headband concept, focusing on bridging cutting-edge technology with market viability.</p>
+                </div>
+                <div class="card">
+                    <h3>Editorial Contributions</h3>
+                    <span class="date">Pratibimb & Business Quotient</span>
+                    <p>Regular contributor of analytical student articles and polished editorial introductions for the university's leading business and cultural publications.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" style="text-align: center; border-bottom: none; padding-bottom: 2rem;">
+            <p class="accent-text" style="margin-bottom: 1rem;">Next Steps</p>
+            <h2 style="font-size: 3rem; margin-bottom: 1.5rem;">Get In Touch</h2>
+            <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto 2.5rem auto;">
+                Whether you have an opportunity in the marketing and sales domain, an inquiry regarding corporate relations, or simply wish to connect, my inbox is always open.
+            </p>
+            
+            <div style="margin-bottom: 3rem; font-size: 1.1rem; line-height: 2;">
+                <p>
+                    <span style="color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; margin-right: 10px;">Email</span> 
+                    <a href="mailto:prakhar.dwivedi140@gmail.com" class="contact-link">prakhar.dwivedi140@gmail.com</a>
+                </p>
+                <p>
+                    <span style="color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; margin-right: 10px;">Phone</span> 
+                    <a href="tel:+918604437354" class="contact-link">+91 86044 37354</a>
+                </p>
+            </div>
+
+            <a href="https://www.linkedin.com/in/prakhardwivedi1408" class="btn" target="_blank">Connect on LinkedIn</a>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>Designed & Curated for Prakhar Dwivedi.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
